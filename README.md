@@ -1,0 +1,1 @@
+Helpers to update the [bio-codes](https://github.com/openfoodfacts/bio-codes) in the [labels page](http://en.wiki.openfoodfacts.org/Global_labels_taxonomy) of [OpenFoodFacts](http://www.openfoodfacts.org).
