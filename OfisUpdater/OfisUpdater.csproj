@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OfisUpdater</RootNamespace>
     <AssemblyName>OfisUpdater</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,18 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Culture.cs" />
-    <Compile Include="IMultiLineParser.cs" />
-    <Compile Include="ISingleLineParser.cs" />
-    <Compile Include="LangFile.cs" />
-    <Compile Include="LangFileParser.cs" />
-    <Compile Include="LanguageEntry.cs" />
-    <Compile Include="LanguageWordList.cs" />
-    <Compile Include="LanguageWordListParser.cs" />
-    <Compile Include="LinkedLangFileParser.cs" />
     <Compile Include="OfisEntry.cs" />
     <Compile Include="OfisParser.cs" />
-    <Compile Include="PrefixOnlyParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -65,14 +56,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Stopwords.cs" />
-    <Compile Include="StopwordsParser.cs" />
-    <Compile Include="Synonym.cs" />
-    <Compile Include="SynonymsParser.cs" />
-    <Compile Include="Translation.cs" />
-    <Compile Include="TranslationParser.cs" />
-    <Compile Include="TranslationSet.cs" />
-    <Compile Include="TranslationSetParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -82,6 +65,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="WebScraper.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\openfoodfacts-lang-parser\OffLangParser\OffLangParser.csproj">
+      <Project>{8494f320-4c3a-4c94-a4be-e210b984f868}</Project>
+      <Name>OffLangParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,9 @@
 ﻿namespace OfisUpdater
 {
+    using OffLangParser;
     using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
 
@@ -8,8 +11,15 @@
     {
         static void Main(string[] args)
         {
-            var f = new LinkedLangFileParser(new LangFileParser(new StopwordsParser(), new SynonymsParser(), new TranslationSetParser(new TranslationParser()))).Parse(@"labels_old.txt");
-            var euOrganic = f.TranslationSets.Single(ts => ts.Translations.Any(t => t.Language.TwoLetterISOLanguageName == "en" && t.Words.Any(w => string.Compare("EU Organic", w, true, t.Language) == 0)));
+            var f = new LinkedLangFileParser(
+                new LangFileParser(
+                    new StopWordsParser(),
+                    new SynonymsParser(),
+                    new TranslationSetParser(
+                        new TranslationParser(),
+                        new LinkedDataParser(new List<PrefixOnlyParser<LinkedData>>(0)))))
+                .Parse(@"labels_old.txt");
+            var euOrganic = f.TranslationSets.Single(ts => ts.Translations.Any(t => t.Language.Name == "en" && t.Words.Any(w => t.Language.CompareInfo.Compare("EU Organic", w, CompareOptions.IgnoreCase) == 0)));
 
             var euOrganicChildren = f.TranslationSets.Where(ts => ts.Parents.Any(p => p == euOrganic));
             var words = euOrganicChildren.Select(t => t.Translations[0].Words[0]);
